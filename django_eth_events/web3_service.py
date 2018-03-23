@@ -46,9 +46,10 @@ class Web3Service(object):
                     )
                 else:
                     protocol = 'https' if settings.ETHEREUM_NODE_SSL else 'http'
-                    endpoint_uri = "{}://{}:{}".format(protocol,
+                    endpoint_uri = "{}://{}:{}/{}".format(protocol,
                                                        settings.ETHEREUM_NODE_HOST,
-                                                       settings.ETHEREUM_NODE_PORT)
+                                                       settings.ETHEREUM_NODE_PORT,
+                                                       settings.ETHEREUM_NODE_PATH)
                     provider = self.default_provider_class(endpoint_uri)
 
             self.web3 = Web3(provider)
